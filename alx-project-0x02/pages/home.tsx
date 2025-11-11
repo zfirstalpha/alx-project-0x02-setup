@@ -1,4 +1,5 @@
 import Card from "@/components/common/Card";
+import { type CardProps } from "@/interfaces";
 
 export default function HomePage() {
   return (
