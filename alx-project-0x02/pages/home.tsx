@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Card from "@/components/common/Card";
 import PostModal from "@/components/common/PostModal";
-
+import Header from '@/components/layout/Header';
 export default function HomePage() {
   const [posts, setPosts] = useState([
     { title: "AI Tools", content: "Explore powerful AI tools designed to make your life easier." },
@@ -15,7 +15,9 @@ export default function HomePage() {
   };
 
   return (
+    
     <div className="min-h-screen bg-gray-100 text-gray-800 flex flex-col justify-center items-center py-12">
+        <Header />
       <h1 className="text-4xl font-bold mb-10">Welcome to the Home Page 🏠</h1>
 
       <button
