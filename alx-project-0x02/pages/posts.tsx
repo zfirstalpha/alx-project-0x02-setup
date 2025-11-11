@@ -1,20 +1,25 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Header from '@/components/layout/Header';
 import PostCard from '@/components/common/PostCard';
 import { PostProps } from '@/interfaces';
 
-const Posts: React.FC = () => {
-  const [posts, setPosts] = useState<PostProps[]>([]);
+// ✅ Next.js data fetching
+export const getStaticProps = async () => {
+  const res = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10');
+  const posts = await res.json();
 
-  useEffect(() => {
-    const fetchPosts = async () => {
-      const response = await fetch('https://jsonplaceholder.typicode.com/posts?_limit=10');
-      const data = await response.json();
-      setPosts(data);
-    };
-    fetchPosts();
-  }, []);
+  return {
+    props: {
+      posts,
+    },
+  };
+};
 
+interface PostsPageProps {
+  posts: PostProps[];
+}
+
+const Posts: React.FC<PostsPageProps> = ({ posts }) => {
   return (
     <div>
       <Header />
