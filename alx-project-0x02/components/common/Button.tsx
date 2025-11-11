@@ -1,7 +1,7 @@
 import React from 'react';
 import { type ButtonProps } from '@/interfaces';
 
-export const Button: React.FC<ButtonProps> = ({ size, shape, label, onClick }) => {
+const Button: React.FC<ButtonProps> = ({ size, shape, label, onClick }) => {
   const sizeClasses = {
     small: 'px-3 py-1 text-sm',
     medium: 'px-4 py-2 text-base',
@@ -17,3 +17,5 @@ export const Button: React.FC<ButtonProps> = ({ size, shape, label, onClick }) =
     </button>
   );
 };
+
+export default Button; // ✅ default export (required)
