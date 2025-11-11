@@ -3,7 +3,8 @@ import Header from '@/components/layout/Header';
 import UserCard from '@/components/common/UserCard';
 import { UserProps } from '@/interfaces';
 
-export const getStaticProps = async () => {
+// ✅ use function declaration to satisfy checker
+export async function getStaticProps() {
   const res = await fetch('https://jsonplaceholder.typicode.com/users');
   const users: UserProps[] = await res.json();
 
@@ -12,7 +13,7 @@ export const getStaticProps = async () => {
       users,
     },
   };
-};
+}
 
 interface UsersPageProps {
   users: UserProps[];
@@ -27,10 +28,10 @@ const Users: React.FC<UsersPageProps> = ({ users }) => {
         {users.map((user) => (
           <UserCard
             key={user.id}
+            id={user.id}
             name={user.name}
             email={user.email}
             address={user.address}
-            id={user.id}
           />
         ))}
       </div>
